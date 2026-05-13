@@ -1,0 +1,134 @@
+{
+  "title": "CKA Practice Labs 2025",
+  "description": "19 hands-on CKA practice questions — PersistentVolumes, ArgoCD, Sidecars, HPA, Network Policies, Gateway API, and more. Each question auto-configures the cluster so you can focus on solving it.",
+  "difficulty": "intermediate",
+  "time": "45",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "foreground": "init-foreground.sh"
+    },
+    "steps": [
+      {
+        "title": "Q1: MariaDB — Persistent Volume",
+        "text": "step1.md",
+        "foreground": "step1-foreground.sh",
+        "verify": "step1-verify.sh"
+      },
+      {
+        "title": "Q2: ArgoCD — Install via Helm (no CRDs)",
+        "text": "step2.md",
+        "foreground": "step2-foreground.sh",
+        "verify": "step2-verify.sh"
+      },
+      {
+        "title": "Q3: Sidecar Container",
+        "text": "step3.md",
+        "foreground": "step3-foreground.sh",
+        "verify": "step3-verify.sh"
+      },
+      {
+        "title": "Q4: Resource Allocation",
+        "text": "step4.md",
+        "foreground": "step4-foreground.sh",
+        "verify": "step4-verify.sh"
+      },
+      {
+        "title": "Q5: HPA — HorizontalPodAutoscaler",
+        "text": "step5.md",
+        "foreground": "step5-foreground.sh",
+        "verify": "step5-verify.sh"
+      },
+      {
+        "title": "Q6: CRDs — cert-manager",
+        "text": "step6.md",
+        "foreground": "step6-foreground.sh",
+        "verify": "step6-verify.sh"
+      },
+      {
+        "title": "Q7: PriorityClass",
+        "text": "step7.md",
+        "foreground": "step7-foreground.sh",
+        "verify": "step7-verify.sh"
+      },
+      {
+        "title": "Q8: CNI & Network Policy",
+        "text": "step8.md",
+        "foreground": "step8-foreground.sh",
+        "verify": "step8-verify.sh"
+      },
+      {
+        "title": "Q9: cri-dockerd",
+        "text": "step9.md",
+        "foreground": "step9-foreground.sh",
+        "verify": "step9-verify.sh"
+      },
+      {
+        "title": "Q10: Taints & Tolerations",
+        "text": "step10.md",
+        "foreground": "step10-foreground.sh",
+        "verify": "step10-verify.sh"
+      },
+      {
+        "title": "Q11: Gateway API",
+        "text": "step11.md",
+        "foreground": "step11-foreground.sh",
+        "verify": "step11-verify.sh"
+      },
+      {
+        "title": "Q12: Ingress",
+        "text": "step12.md",
+        "foreground": "step12-foreground.sh",
+        "verify": "step12-verify.sh"
+      },
+      {
+        "title": "Q13: Network Policy",
+        "text": "step13.md",
+        "foreground": "step13-foreground.sh",
+        "verify": "step13-verify.sh"
+      },
+      {
+        "title": "Q14: Storage Class",
+        "text": "step14.md",
+        "foreground": "step14-foreground.sh",
+        "verify": "step14-verify.sh"
+      },
+      {
+        "title": "Q15: Etcd Fix",
+        "text": "step15.md",
+        "foreground": "step15-foreground.sh",
+        "verify": "step15-verify.sh"
+      },
+      {
+        "title": "Q16: NodePort Service",
+        "text": "step16.md",
+        "foreground": "step16-foreground.sh",
+        "verify": "step16-verify.sh"
+      },
+      {
+        "title": "Q17: TLS Config",
+        "text": "step17.md",
+        "foreground": "step17-foreground.sh",
+        "verify": "step17-verify.sh"
+      },
+      {
+        "title": "Q18: kubectl patch — Resource Limits",
+        "text": "step18.md",
+        "foreground": "step18-foreground.sh",
+        "verify": "step18-verify.sh"
+      },
+      {
+        "title": "Q19: Resource Allocation v2 — Pod Scheduling",
+        "text": "step19.md",
+        "foreground": "step19-foreground.sh",
+        "verify": "step19-verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-2nodes"
+  }
+}

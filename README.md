@@ -1,78 +1,85 @@
-# CKA Practice Labs — 2025
+# CKA Practice (Simple Edition)
 
-Hands-on CKA practice questions derived from the CKA-PREP playlist.  
-Clone once, source once, then navigate all 19 questions with simple commands — no scripts to run manually.
+Straightforward CKA practice labs derived from the CKA-PREP playlist. Every question lives in its own folder with bash files:
 
-> **Note:** This is a living repo and may still have rough edges. Open an issue if you find a bug in a setup or validation script.
+**Note:** This is a living repo and may still contain bugs or rough edges. If you spot an issue—especially in lab setup or validation scripts—please open an issue so it can be fixed.
+
+**Exam prep note:** These questions are designed to be similar to the CKA exam, but they are not meant be exact matches. Learn the underlying concepts in depth and try different scenarios so you can solve variations under exam conditions.
+
+- `LabSetUp.bash` — set up the environment for the question.
+- `Questions.bash` — the scenario text plus the YouTube link for the walkthrough.
+- `SolutionNotes.bash` — a step-by-step solution when you need a hint.
+- `validate.bash` — automatic validation checks to confirm your solution is correct.
+- `cleanup.bash` — clean up and remove resources created during the question.
 
 ---
 
-## Quick Start
+## How to Use
 
+1. Launch the [Killercoda CKA playground]([https://killercoda.com/cka](https://killercoda.com/playgrounds/scenario/cka) or your own cluster.
+2. Clone this repo inside the environment:
+   ```bash
+   git clone https://github.com/markdjones82/CKA-PREP-2025-v2.git ~/CKA-PREP-2025-v2
+   cd ~/CKA-PREP-2025-v2
+   ```
+3. Run a question setup by number:
+   ```bash
+   scripts/run-question.sh 5
+   ```
+4. Work through the task, then consult `SolutionNotes.bash` if you need help.
+5. Validate your solution:
+   ```bash
+   scripts/validate-question.sh 5
+   ```
+6. Clean up resources when done:
+   ```bash
+   scripts/cleanup-question.sh 5
+   ```
+
+---
+
+## Validating Your Solutions
+
+Each question has a `validate.bash` script that runs automated checks against your cluster to confirm the solution is correct.
+
+### Validate a single question
 ```bash
-# 1. Clone into your Killercoda / cluster terminal
-git clone https://github.com/markdjones82/CKA-PREP-2025-v2.git ~/CKA-PREP-2025-v2
+# By question number
+scripts/validate-question.sh 5
+
+# By directory name
+scripts/validate-question.sh Question-5-HPA
+```
+
+### Validate all questions
+```bash
+scripts/validate-question.sh all
+```
+
+The script outputs `PASS` or `FAIL` for each check, with a final score summary. Exit code is `0` if all checks pass, non-zero otherwise.
+
+---
+
+## Simulated Exam Desktop (VSCodium)
+
+You can use **VSCodium** (an open-source VS Code build) inside the Killercoda simulated desktop to edit files in a familiar IDE environment, similar to what is available in the real CKA exam.
+
+> **NOTE: A paid Killercoda subscription is required** for the simulated desktop environment.
+> Without it, the desktop GUI is not available and VSCodium cannot be launched graphically.
+
+### Install VSCodium
+```bash
+scripts/install-codium.sh
+```
+
+### Launch VSCodium
+Once installed, open it from inside your repo:
+```bash
 cd ~/CKA-PREP-2025-v2
-
-# 2. Load the lab environment (do this once per terminal session)
-source lab.sh
-
-# 3. Show the question menu and pick one
-lab
+codium --no-sandbox --user-data-dir .
 ```
 
-That's it. You're in the lab.
-
----
-
-## Commands
-
-After running `source lab.sh`, you have these commands available anywhere in your shell:
-
-| Command       | What it does                                          |
-|---------------|-------------------------------------------------------|
-| `lab`         | Show the full question menu                           |
-| `lab <N>`     | Jump to question N — runs lab setup, shows the task   |
-| `next`        | Move to the next question (runs setup automatically)  |
-| `prev`        | Move to the previous question                         |
-| `validate`    | Check your solution for the current question          |
-| `hint`        | Show step-by-step solution notes                      |
-| `cleanup`     | Remove all resources created for the current question |
-| `status`      | Show which question you're currently on               |
-
-### Example session
-
-```bash
-source lab.sh     # load once
-
-lab 1             # start Question 1 (MariaDB PV) — lab setup runs automatically
-
-# ... do the task ...
-
-validate          # check if you got it right
-hint              # stuck? see the solution notes
-
-next              # move on to Question 2 — setup runs automatically
-
-cleanup           # remove Q2 resources when done
-```
-
-Your current question is remembered across terminal sessions in `~/.cka_lab_state`.  
-Re-source `lab.sh` in a new terminal and pick up right where you left off.
-
----
-
-## How Each Question is Structured
-
-Every question folder contains:
-
-| File                | Purpose                                               |
-|---------------------|-------------------------------------------------------|
-| `LabSetUp.bash`     | Creates the cluster state you need to work against    |
-| `Questions.bash`    | The task description (what you must do)               |
-| `SolutionNotes.bash`| Step-by-step walkthrough / hints                      |
-| `validate.bash`     | Automated checks — PASS / FAIL for each requirement   |
-| `cleanup.bash`      | Tears down everything created by the lab              |
+This opens VSCodium in the current directory, allowing you to browse and edit all question files directly.
 
 ---
 
@@ -99,25 +106,3 @@ Every question folder contains:
 | 17 | TLS Config | — |
 | 18 | kubectl patch — Resource Limits | — |
 | 19 | Resource Allocation v2 — Pod Scheduling | — |
-
----
-
-## Simulated Exam Desktop (VSCodium)
-
-A paid Killercoda subscription is required for the simulated desktop.
-
-```bash
-scripts/install-codium.sh
-codium --no-sandbox --user-data-dir .
-```
-
----
-
-## Legacy Scripts (still work)
-
-```bash
-scripts/run-question.sh 5          # setup + show question
-scripts/validate-question.sh 5     # validate
-scripts/cleanup-question.sh 5      # cleanup
-scripts/validate-question.sh all   # validate all
-```
